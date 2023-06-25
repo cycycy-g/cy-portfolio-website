@@ -6,6 +6,8 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --primary-color: #00402a;
+  --secondary-color: #472A2A;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,10 +20,58 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+}
+
+@layer components {
+  .container-section {
+    @apply relative h-screen w-full;
+    overflow: scroll;
+    overscroll-behavior-y: contain;
+    scroll-snap-type: y mandatory;
+  }
+
+  .section {
+    @apply h-screen w-full flex justify-center items-center relative;
+    scroll-snap-align: center;
+  }
+}
+
+@layer utilities {
+  .clip-path {
+    clip-path: inset(4px round 40px);
+  }
+
+  .clip-path2 {
+    clip-path: inset(0px round 44px);
+  }
+
+  .remove-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .remove-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .arrow {
+    box-sizing: border-box;
+    height: 1rem;
+    width: 1rem;
+    border-style: solid;
+    border-color: white;
+    border-width: 0px 1px 1px 0px;
+    transform: rotate(45deg);
+    transition: border-width 150ms ease-in-out;
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+
+  .arrow:hover {
+    border-bottom-width: 4px;
+    border-right-width: 4px;
+  }
 }
