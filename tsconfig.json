@@ -24,14 +24,13 @@
       ]
     },
     "checkJs": true,
-    "noImplicitAny": false
   },
   "include": [
     "main.d.ts",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/components/Experience"  ],
   "exclude": [
     "node_modules"
   ]

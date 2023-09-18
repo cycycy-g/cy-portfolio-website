@@ -1,4 +1,3 @@
-import { Props } from '@/pages/constants';
 import { SiJavascript } from "@react-icons/all-files/si/SiJavascript";
 import { SiTypescript } from "@react-icons/all-files/si/SiTypescript";
 import { SiReact } from "@react-icons/all-files/si/SiReact";
@@ -10,36 +9,81 @@ import { SiNextDotJs } from "@react-icons/all-files/si/SiNextDotJs";
 import { SiPostgresql } from "@react-icons/all-files/si/SiPostgresql";
 import { SiMongodb } from "@react-icons/all-files/si/SiMongodb";
 import { SiRedux } from "@react-icons/all-files/si/SiRedux";
-import Me from './Me';
+import { useSpring, animated, useTrail } from '@react-spring/web';
+import Trail from './Trail';
+import Background from './Background';
+import { useWindowSize } from "usehooks-ts";
 
-const h1Styles = "text-9xl mb-20";
+interface Props {
+  scrollTo: (T: number) => void;
+  goToSectionRef: number;
+  goToContactSectionRef: number;
+}
 
-export default function Introduction ({ scrollTo, goToSectionRef }: Props) {
+export default function Introduction({
+  scrollTo,
+  goToSectionRef,
+  goToContactSectionRef
+}: Props) {
+  const { width } = useWindowSize();
+
+  const springs = useSpring({
+    from: { x: 0 },
+    to: { x: width < 575 ? 0 : 100 },
+  });
+
+  const trails = useTrail(1, {
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+  })
+
   return (
-    <div className="section bg-primary-green">
-      <section className="flex items-center w-5/12 h-2/6 flex-col">
-        <h1 className={h1Styles}>
-          Cyryll Galon
-        </h1>
-        <div className="flex text-5xl w-2/4 justify-between mb-10">
-          <SiJavascript />
-          <SiTypescript />
-          <SiReact />
-          <SiRedux />
-          <SiHtml5 />
-          <SiCss3 />
-        </div>
-        <div className="flex text-5xl w-2/4 justify-between mb-10">
-          <SiScala />
-          <SiNodeDotJs />
-          <SiNextDotJs />
-          <SiPostgresql />
-          <SiMongodb />
-        </div>
-      </section>
-      <Me />
-
-      <button className="arrow" onClick={() => scrollTo(goToSectionRef)}></button>
+    <div className="section main-bg">
+      <Background />
+      <div className=" w-11/12 mx-auto flex justify-center sm:justify-between lg:w-full h-full">
+        <animated.section
+          className="intro-animation"
+          style={{ ...springs }}
+        >
+          <div className="text-zone">
+            {trails.map((props, idx) => (
+              <animated.h1 key={idx} style={props}>
+                Hi!
+                <br />
+                I&apos;m Cy
+              </animated.h1>
+            ))}
+            <h2>Software Engineer / Frontend Engineer</h2>
+          </div>
+          <Trail>
+            <SiJavascript message="Javascript" />
+            <SiTypescript message="Typescript" />
+            <SiReact message="React" />
+            <SiRedux message="Redux" />
+            <SiHtml5 message="HTML5" />
+            <SiCss3 message="CSS3" />
+          </Trail>
+          <Trail>
+            <SiScala message="Scala" />
+            <SiNodeDotJs message="NodeJs" />
+            <SiNextDotJs message="NextJs" />
+            <SiPostgresql message="Postgres" />
+            <SiMongodb message="MongoDB" />
+          </Trail>
+          <div className="button hover:bg-secondary-green transition-colors z-10">
+            <button
+              type='button'
+              onClick={() => scrollTo(goToContactSectionRef)}
+            >
+              CONTACT ME
+            </button>
+          </div>
+        </animated.section>
+        <button
+          className="arrow"
+          onClick={() => scrollTo(goToSectionRef)}
+        />
+      </div>
     </div>
   )
 }

@@ -4,8 +4,8 @@ import { MutableRefObject } from 'react';
 const inter = Inter({ subsets: ['latin'] })
 
 export type Props = {
-  scrollTo: (T:  MutableRefObject<HTMLInputElement | null>) => void,
-  goToSectionRef:  MutableRefObject<HTMLInputElement | null>
+  scrollTo: (T: number) => void,
+  goToSectionRef:  number,
 }
 
 export const mainClassnames = `${inter.className} `;

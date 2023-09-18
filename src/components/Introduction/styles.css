@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .animation {
+    display: block;
+    position: relative;
+
+    &.animation-layer {
+      height: 1000px;
+    }
+  }
+
+  .animation-layer {
+    background-position: bottom center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    &.parallax {
+      position: fixed;
+    }
+  }
+
+  .intro-animation {
+    @apply flex justify-center items-center sm:items-center md:items-start  md:w-6/12 lg:items-start  lg:w-5/12 flex-col;
+
+    h1 {
+      @apply text-7xl mb-5 md:text-9xl;
+    }
+
+    h2 {
+      @apply text-lg mb-5 text-slate-200;
+    }
+  }
+
+  .text-zone {
+    z-index: 10000;
+  }
+
+  .trail-container {
+    @apply text-3xl flex lg:text-5xl w-full justify-between mb-10;
+  }
+}

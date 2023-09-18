@@ -1,0 +1,8 @@
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .contact-section {
+    @apply h-full w-full;
+  }
+}

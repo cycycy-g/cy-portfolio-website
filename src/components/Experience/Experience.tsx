@@ -1,12 +1,32 @@
-import { Props } from '@/pages/constants'
+import Stripe from './Stripe';
 
-const styles = "section bg-primary-green"
-
-export default function Experience ({ scrollTo, goToSectionRef }: Props) {
+const Experiences = () => {
   return (
-    <div className={styles}>
-      <h1>Experience</h1>
-      <button className="arrow" onClick={() => scrollTo(goToSectionRef)}></button>
+    <div className="experiences-container">
+      <div className="experiences">
+        <div className="experience-title">          
+          <h2>
+            Gemini
+          </h2>
+          <span>Sep 2021 - Current</span>
+        </div>
+          <span>Software Engineer</span>
+      </div>
+      <Stripe />
+    </div>
+  )
+}
+
+export default function Experience () {
+  return (
+    <div className="experience-section">
+      <div className="experience-subtitle">
+        <h4>Experience</h4>
+      </div>
+      <Stripe />
+       <Experiences />
+       <Experiences />
+       <Experiences />
     </div>
   )
 }

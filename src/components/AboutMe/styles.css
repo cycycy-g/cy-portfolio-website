@@ -1,0 +1,58 @@
+@tailwind utilities;
+
+@layer utilities {
+  .about-me-container {
+    @apply h-screen w-full flex items-center bg-primary-green text-white flex-col;
+
+  }
+
+  .width-container {
+    @apply w-11/12 pt-6 sm:w-11/12 md:w-10/12 lg:w-10/12 lg:mx-auto xl:max-w-screen-xl;
+  }
+
+  .about-me {
+    @apply pt-6 sm:pt-10 md:pt-12 lg:flex lg:pt-16 xl:pt-56;
+  }
+
+  .about-me-title {
+    @apply mb-2 sm:mb-3 md:mb-3 lg:mb-5 lg:w-9/12;
+
+    h1 {
+      @apply text-3xl mb-2 sm:mb-2 sm:text-5xl md:text-5xl lg:text-6xl lg:leading-tight;
+
+
+    }
+
+    h2 {
+      @apply text-2xl sm:text-2xl md:text-3xl lg:text-4xl;
+    }
+
+    span {
+      @apply text-bright-green;
+    }
+  }
+
+  .about-me-heading {
+    @apply relative flex flex-row justify-between items-center sm:justify-between sm:flex-row md:justify-between md:flex-row lg:w-3/12 lg:flex-col lg:mb-4;
+
+    .picture {
+      @apply rounded-[50%] mb-3 w-40 h-40 sm:w-52 sm:h-52;
+    }
+
+    .paragraph {
+      @apply text-sm w-5/12 sm:w-1/2 md:w-1/2 md:leading-6 lg:leading-9 lg:w-full;
+    }
+  }
+
+
+
+  .about-me-2 {
+    h2 {
+      @apply text-2xl md:mb-4 lg:text-4xl lg:mb-9;
+    }
+
+    p {
+      @apply pt-2 text-sm leading-7 md:text-xl md:pt-6 md:leading-8 lg:leading-9;
+    }
+  }
+}
